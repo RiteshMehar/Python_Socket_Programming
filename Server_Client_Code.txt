@@ -1,0 +1,18 @@
+𝐒𝐞𝐫𝐯𝐞𝐫 𝐂𝐨𝐝𝐞:
+𝐒𝐨𝐜𝐤𝐞𝐭 𝐈𝐧𝐢𝐭𝐢𝐚𝐥𝐢𝐳𝐚𝐭𝐢𝐨𝐧: The server initializes a socket using socket.socket(), setting up a TCP/IP socket by default.
+𝐁𝐢𝐧𝐝𝐢𝐧𝐠 𝐭𝐨 𝐈𝐏 𝐚𝐧𝐝 𝐏𝐨𝐫𝐭: The server binds to IP "0.0.0.0" and port 1234, making it accessible from any IP address on this port.
+𝐋𝐢𝐬𝐭𝐞𝐧𝐢𝐧𝐠 𝐟𝐨𝐫 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐨𝐧𝐬: server.listen() enables the server to listen for incoming connections.
+𝐀𝐜𝐜𝐞𝐩𝐭𝐢𝐧𝐠 𝐚 𝐂𝐥𝐢𝐞𝐧𝐭 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐨𝐧: Once a client connects, server.accept() returns the connection object and the client's IP address.
+𝐑𝐞𝐜𝐞𝐢𝐯𝐢𝐧𝐠 𝐃𝐚𝐭𝐚 𝐟𝐫𝐨𝐦 𝐂𝐥𝐢𝐞𝐧𝐭: Inside a while loop, the server receives data from the client using conn.recv(1024).
+𝐌𝐞𝐬𝐬𝐚𝐠𝐞 𝐇𝐚𝐧𝐝𝐥𝐢𝐧𝐠 𝐚𝐧𝐝 𝐓𝐞𝐫𝐦𝐢𝐧𝐚𝐭𝐢𝐨𝐧: If the received message is "bye", the loop breaks, ending the session.
+𝐒𝐞𝐧𝐝𝐢𝐧𝐠 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞𝐬 𝐭𝐨 𝐭𝐡𝐞 𝐂𝐥𝐢𝐞𝐧𝐭: The server responds to the client's messages, allowing interactive communication.
+𝐂𝐥𝐨𝐬𝐢𝐧𝐠 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐨𝐧𝐬: After the session, the server closes the client connection (conn.close()) and the main server socket (server.close()).
+
+
+𝐂𝐥𝐢𝐞𝐧𝐭 𝐂𝐨𝐝𝐞:
+𝐒𝐨𝐜𝐤𝐞𝐭 𝐈𝐧𝐢𝐭𝐢𝐚𝐥𝐢𝐳𝐚𝐭𝐢𝐨𝐧: The client also initializes a socket object using socket.socket().
+𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐧𝐠 𝐭𝐨 𝐭𝐡𝐞 𝐒𝐞𝐫𝐯𝐞𝐫: client.connect( (server_ip, server_port)) establishes a connection to the specified server IP and port.
+𝐒𝐞𝐧𝐝𝐢𝐧𝐠 𝐃𝐚𝐭𝐚 𝐭𝐨 𝐒𝐞𝐫𝐯𝐞𝐫: In a loop, the client sends messages to the server using client.send(message.encode()).
+𝐑𝐞𝐜𝐞𝐢𝐯𝐢𝐧𝐠 𝐒𝐞𝐫𝐯𝐞𝐫 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞𝐬: After each message, the client waits to receive a response from the server using client.recv(1024).
+𝐌𝐞𝐬𝐬𝐚𝐠𝐞 𝐇𝐚𝐧𝐝𝐥𝐢𝐧𝐠 𝐚𝐧𝐝 𝐓𝐞𝐫𝐦𝐢𝐧𝐚𝐭𝐢𝐨𝐧: If the client sends the message "bye", it breaks the loop and begins closing the connection.
+𝐂𝐥𝐨𝐬𝐢𝐧𝐠 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐢𝐨𝐧: The client socket is closed using client.close() after exiting the loop.
